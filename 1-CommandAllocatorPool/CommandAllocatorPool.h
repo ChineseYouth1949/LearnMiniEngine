@@ -11,8 +11,8 @@ public:
     CommandAllocatorPool(D3D12_COMMAND_LIST_TYPE Type);
     ~CommandAllocatorPool();
 
-    void Initialize(ID3D12Device* pDevice);
-    void Reset();
+    void Create(ID3D12Device* pDevice);
+    void Shutdown();
 
     ID3D12CommandAllocator* RequestAllocator(uint64_t CompletedFenceValue);
     void DiscardAllocator(uint64_t FenceValue, ID3D12CommandAllocator* Allocator);

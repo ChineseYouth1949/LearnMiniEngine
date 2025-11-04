@@ -9,16 +9,16 @@ CommandAllocatorPool::CommandAllocatorPool(D3D12_COMMAND_LIST_TYPE Type) :
 
 CommandAllocatorPool::~CommandAllocatorPool()
 {
-    Reset();
+    Shutdown();
 }
 
 
-void CommandAllocatorPool::Initialize(ID3D12Device* pDevice)
+void CommandAllocatorPool::Create(ID3D12Device* pDevice)
 {
     mDevice = pDevice;
 }
 
-void CommandAllocatorPool::Reset()
+void CommandAllocatorPool::Shutdown()
 {
     for (size_t i = 0; i < mAllocatorPool.size(); ++i)
         mAllocatorPool[i]->Release();
